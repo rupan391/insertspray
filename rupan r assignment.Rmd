@@ -1,0 +1,40 @@
+```{r}
+str(InsectSprays)
+head(InsectSprays
+summary(InsectSprays)
+```
+```{r}
+missing_values <- sapply(InsectSprays, function(x) sum(is.na(x)))
+print(missing_values)
+```
+
+```{r}
+# Visualize the data
+# Histogram for numerical variables
+num_vars <- sapply(InsectSprays, is.numeric)
+num_data <- InsectSprays[, num_vars]
+```
+
+```{r}
+# boxplot
+ggplot(InsectSprays, aes(x =count, y =spray)) +
+  geom_boxplot(fill = "orange", color = "black") +
+  theme_minimal() +
+  labs(title = "Boxplot of Humidity by Season", x= "count", y= "spray")
+```
+
+```{r}
+# Scatter plot to show the relationship between two numeric variables (replace 'temp' and 'humidity' with appropriate column names)
+ggplot(InsectSprays, aes(x = count, y = spray)) +
+  geom_point(color = "red") +
+  theme_minimal() +
+  labs(title = "Scatter Plot of Temperature vs Humidity", x = "count", y = "spray")
+```
+
+```{r}
+# Time series plot for a variable over time (replace 'date' and 'temp' with appropriate column names)
+ggplot(InsectSprays, aes(x = count , y = spray)) +
+  geom_line(color = "blue") +
+  theme_minimal() +
+  labs(title = "count vs spray", x = "count", y = "spray")
+```
